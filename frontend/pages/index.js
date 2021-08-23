@@ -1,19 +1,5 @@
 import React, { useState } from "react";
-import {
-  Form,
-  Input,
-  Button,
-  Radio,
-  Select,
-  Cascader,
-  DatePicker,
-  InputNumber,
-  TreeSelect,
-  Switch,
-  Checkbox,
-  Row,
-  Col,
-} from "antd";
+import { Form, Input, Button, Select, Checkbox, Row, Col } from "antd";
 
 const FormSizeDemo = () => {
   const [componentSize, setComponentSize] = useState("default");
@@ -43,15 +29,8 @@ const FormSizeDemo = () => {
         size: componentSize,
       }}
       onValuesChange={onFormLayoutChange}
-      size={componentSize}
+      size={"large"}
     >
-      <Form.Item label="Form Size" name="size">
-        <Radio.Group>
-          <Radio.Button value="small">Small</Radio.Button>
-          <Radio.Button value="default">Default</Radio.Button>
-          <Radio.Button value="large">Large</Radio.Button>
-        </Radio.Group>
-      </Form.Item>
       <Form.Item label="tipo de persona">
         <Select onSelect={(e) => onEntityChange(e)}>
           <Select.Option value="naturales">Persona natural</Select.Option>
@@ -63,7 +42,7 @@ const FormSizeDemo = () => {
         <>
           {typeEntity === "tipo de documento" ? (
             <>
-              <Form.Item label={typeEntity}>
+              <Form.Item label={typeEntity} required>
                 <Select>
                   <Select.Option value="cedula">Cédula</Select.Option>
                   <Select.Option value="pasaporte">Pasaporte</Select.Option>
@@ -75,22 +54,22 @@ const FormSizeDemo = () => {
                   </Select.Option>
                 </Select>
               </Form.Item>
-              <Form.Item label="Número de documento">
+              <Form.Item label="Número de documento" required>
                 <Input />
               </Form.Item>
-              <Form.Item label="Nombres">
+              <Form.Item label="Nombres" required>
                 <Input />
               </Form.Item>
-              <Form.Item label="Apellidos">
+              <Form.Item label="Apellidos" required>
                 <Input />
               </Form.Item>
             </>
           ) : (
             <>
-              <Form.Item label={typeEntity}>
+              <Form.Item label={typeEntity} required>
                 <Input />
               </Form.Item>
-              <Form.Item label="Razón social">
+              <Form.Item label="Razón social" required>
                 <Input />
               </Form.Item>
             </>
@@ -122,75 +101,40 @@ const FormSizeDemo = () => {
       <Form.Item label="Dirección" required>
         <Input />
       </Form.Item>
+      <Form.Item label="Área" required>
+        <Input />
+      </Form.Item>
+      <Form.Item label="Valor comercial" required>
+        <Input />
+      </Form.Item>
       <Form.Item name="checkbox-group" label="Terrenos">
         <Checkbox.Group>
           <Row>
-            <Col span={6}>
+            <Col span={8}>
               <Checkbox value="water" style={{ lineHeight: "32px" }}>
                 Cerca de fuentes de agua
               </Checkbox>
             </Col>
-            <Col span={6}>
+            <Col span={8}>
               <Checkbox value="rural" style={{ lineHeight: "32px" }}>
                 Rural
               </Checkbox>
             </Col>
-            <Col span={6}>
+            <Col span={8}>
               <Checkbox value="urban" style={{ lineHeight: "32px" }}>
                 Urbano
-              </Checkbox>
-            </Col>
-            <Col span={6}>
-              <Checkbox value="construction" style={{ lineHeight: "32px" }}>
-                Tiene construcciones en él
               </Checkbox>
             </Col>
           </Row>
         </Checkbox.Group>
       </Form.Item>
-      <Form.Item label="TreeSelect">
-        <TreeSelect
-          treeData={[
-            {
-              title: "Light",
-              value: "light",
-              children: [
-                {
-                  title: "Bamboo",
-                  value: "bamboo",
-                },
-              ],
-            },
-          ]}
-        />
+      <Form.Item label="Construcciones en él" required>
+        <Input />
       </Form.Item>
-      <Form.Item label="Cascader">
-        <Cascader
-          options={[
-            {
-              value: "zhejiang",
-              label: "Zhejiang",
-              children: [
-                {
-                  value: "hangzhou",
-                  label: "Hangzhou",
-                },
-              ],
-            },
-          ]}
-        />
-      </Form.Item>
-      <Form.Item label="DatePicker">
-        <DatePicker />
-      </Form.Item>
-      <Form.Item label="InputNumber">
-        <InputNumber />
-      </Form.Item>
-      <Form.Item label="Switch">
-        <Switch />
-      </Form.Item>
-      <Form.Item label="Button">
-        <Button>Button</Button>
+      <Form.Item>
+        <Button>Enviar</Button>
+        <Button>Editar</Button>
+        <Button>Eliminar</Button>
       </Form.Item>
     </Form>
   );
